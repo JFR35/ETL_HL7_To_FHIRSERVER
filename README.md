@@ -13,9 +13,10 @@ Objetivos del proyecto
     
 - Buen diseño técnico y conocimiento de **estándares e interoperabilidad**.
 
+# Diagrama de componentes:
 ![image](https://github.com/user-attachments/assets/78a06fea-f3c5-4b65-9cc7-5cac842971b3)
 
-Componentes:
+Explicación del Componentes:
 
 	1) Entrada Hl7v2 en Mirth Connect:
 	
