@@ -59,10 +59,10 @@ Stack utilizado:
 
 - **Instalar Docker.**
 
--**Levantar Aidbox/Postgres (docker-compose up -d).**
+- **Levantar Aidbox/Postgres (docker-compose up -d).**
 
--**Configurar Mirth Connect (importar el canal, configurar el directorio de entrada/salida).**
+- **Configurar Mirth Connect (importar el canal, configurar el directorio de entrada/salida).**
 
--**Compilar y ejecutar la aplicación Spring Boot.**
+- **Compilar y ejecutar la aplicación Spring Boot.**
 
--**Deployar el canal y enviar mensaje.**
+- **Deployar el canal y enviar mensaje.**
