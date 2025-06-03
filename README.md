@@ -53,7 +53,7 @@ Stack utilizado:
 - **Transform (T):** Mirth con JavaScript transformando a  HL7v2 a JSON, y luego envío a Spring Boot transformando JSON a recursos FHIR y validándolos.
 - **Load (L):** Tu Spring Boot enviando los recursos FHIR a Aidbox.
 
-Guía de Configuración y Ejecución: Pasos claros para que cualquiera pueda levantar el proyecto localmente:
+** Guía de Configuración y Ejecución: Pasos claros para que cualquiera pueda levantar el proyecto localmente: **
 
 Clonar el repo.
 
