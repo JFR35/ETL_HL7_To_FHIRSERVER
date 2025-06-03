@@ -1,10 +1,25 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Build artifacts
+/target/
+/build/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
 
-### STS ###
+# Maven Wrapper files
+.mvn/wrapper/maven-wrapper.jar
+
+# Log files
+*.log
+logs/
+
+# IDE specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
 .apt_generated
 .classpath
 .factorypath
@@ -12,25 +27,26 @@ target/
 .settings
 .springBeans
 .sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# OS generated files
+.DS_Store
+Thumbs.db
 
+# Environment variables and sensitive configurations (add as needed)
+.env
+*.env
+# /src/main/resources/application-local.properties
+# /src/main/resources/application-dev.properties
+
+# Docker volume mount points (local data, not part of Git repo)
 /postgres_data/
 
+# Mirth Connect specific files (if they are being placed inside your project root)
+# If you store Mirth configurations or temporary data directly in your project folder
+# /mirth-data/
+# /mirth-channel-configs/
