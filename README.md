@@ -52,3 +52,17 @@ Stack utilizado:
 - **Extract (E):** Mirth Connect ingesta el archivo HL7v2.
 - **Transform (T):** Mirth con JavaScript transformando a  HL7v2 a JSON, y luego envío a Spring Boot transformando JSON a recursos FHIR y validándolos.
 - **Load (L):** Tu Spring Boot enviando los recursos FHIR a Aidbox.
+
+Guía de Configuración y Ejecución: Pasos claros para que cualquiera pueda levantar el proyecto localmente:
+
+Clonar el repo.
+
+Instalar Docker.
+
+Levantar Aidbox/Postgres (docker-compose up -d).
+
+Configurar Mirth Connect (importar el canal, configurar el directorio de entrada/salida).
+
+Compilar y ejecutar la aplicación Spring Boot.
+
+Cómo enviar un mensaje HL7v2 de prueba.
