@@ -3,17 +3,28 @@ ETL para transformar un Mensaje ORU^R01 HL7 recibido por Mirth Connet a Recurso 
 
 Objetivos del proyecto
 
-- Capacidad para **procesar HL7v2 con Mirth**.
+- Capacidad para **procesar HL7v2 con motor de integración Mirth y transformación a JSON**.
     
 - Transformación a FHIR con **Java + HAPI FHIR**.
     
-- Validación de recursos FHIR.
+- Validación y mapeo del JSON a recursos FHIR.
     
 - Almacenamiento en un servidor real como **Aidbox**.
     
 - Buen diseño técnico y conocimiento de **estándares e interoperabilidad**.
 
-# Diagrama de componentes:
+- Desarrollo de una API RESTful con Spring Boot.
+
+# Tecnologías y herramientas utilizadas:
+- Aidbox FHIR Server.
+- Mirth Connect.
+- HL7v2.5.
+- FHIR R4.
+- HAPI FHIR librería.
+- Spring Boot.
+- Docker.
+  
+# Diagrama de componentes y arquitectura a alto nivel del sistema:
 ![image](https://github.com/user-attachments/assets/78a06fea-f3c5-4b65-9cc7-5cac842971b3)
 
 Explicación del Componentes:
