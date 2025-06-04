@@ -63,3 +63,36 @@ Este proyecto refleja mis competencias prácticas en interoperabilidad sanitaria
 - Permite visualización y gestión de los datos clínicos en formato FHIR.
 
 ---
+
+1. **Clonar el repositorio**
+
+```bash
+git clone https://github.com/tu_usuario/TL_HL7_To_FHIRSERVER.git
+cd TL_HL7_To_FHIRSERVER
+
+2. **Instalar Docker**
+
+https://docs.docker.com/get-docker/
+
+3. **Levantar Aidbox + PostgreSQL**
+docker-compose up -d
+
+4. **Importar Canal en Mirth Connect**
+
+Acceder a Mirth en http://localhost:8081
+
+Importar canal desde /mirth-channel/etl_hl7_channel.xml
+
+Configurar FileReader con ruta a /hl7-messages
+
+Ejecutar Spring Boot App
+
+cd spring-app
+./mvnw spring-boot:run
+
+5. **Enviar Mensaje de Prueba**
+
+Coloca un .hl7 en la carpeta configurada en FileReader
+
+Revisa consola/logs y el recurso FHIR en Aidbox (http://localhost:8087&ui/console)
+------
