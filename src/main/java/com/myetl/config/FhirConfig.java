@@ -2,20 +2,16 @@ package com.myetl.config;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
-import jakarta.annotation.PostConstruct;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * Configuración de FHIR para la integración con Aidbox.
  *
  * <p>Esta clase inicializa el contexto de FHIR y el cliente para interactuar
- * con el servidor FHIR especificado en la configuración.</p>
+ * con el servidor FHIR</p>
  */
-@RequiredArgsConstructor
-@Getter
 @Configuration
 public class FhirConfig {
 
@@ -27,21 +23,24 @@ public class FhirConfig {
     @Value("${aidbox.fhir.base-url}")
     private String baseUrl;
 
-    /** Contexto de FHIR para manejar recursos en formato FHIR R4. */
-    private FhirContext fhirContext;
-
-    /** Cliente genérico para realizar operaciones REST sobre FHIR. */
-    private IGenericClient client;
-
+    /**
+     * Declarar un bean para FhirContext.
+     */
+    @Bean
+    public FhirContext fhirContext() {
+        return FhirContext.forR4();
+    }
 
     /**
-     * Inicializa el contexto de FHIR y el cliente tras la construcción de la clase.
+     * Declara un bean para IGenericClient.
+     * Spring inyectará por paraámetro automáticamente el FhirContext declarado arriba.
      *
-     * <p>Se ejecuta automáticamente después de la creación de la instancia.</p>
+     * @param fhirContext El FhirContext inyectado por Spring.
+     * @param baseUrl La URL base del servidor FHIR inyectada desde properties.
+     * @return Una instancia de IGenericClient.
      */
-    @PostConstruct
-    public void init() {
-        this.fhirContext = FhirContext.forR4();
-        this.client = fhirContext.newRestfulGenericClient(baseUrl);
+    @Bean
+    public IGenericClient fhirClient(@Value("${aidbox.fhir.base-url}") String baseUrl, FhirContext fhirContext) {
+        return fhirContext.newRestfulGenericClient(baseUrl);
     }
 }
