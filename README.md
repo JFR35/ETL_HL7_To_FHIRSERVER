@@ -38,6 +38,7 @@ Este proyecto refleja mis competencias prácticas en interoperabilidad sanitaria
 [HL7 ORU^R01] → [Mirth Connect] → [JSON] → [Spring Boot + HAPI FHIR] → [FHIR Resource] → [Aidbox Server]
 
 
+![image](https://github.com/user-attachments/assets/9cce6aca-f4b3-45a5-834f-18e3b306f635)
 
 
 
