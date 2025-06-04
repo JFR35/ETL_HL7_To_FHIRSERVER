@@ -1,79 +1,64 @@
 # ETL_HL7_To_FHIRSERVER
-ETL para transformar un Mensaje ORU^R01 HL7 recibido por Mirth Connet a Recurso FHIR en Spring Boot y endpoint a servidor FHIR
 
-Objetivos del proyecto
+**ETL para transformar un mensaje HL7 v2 ORU^R01 recibido por Mirth Connect a un recurso FHIR y enviarlo a un servidor FHIR (Aidbox) mediante una API en Spring Boot con HAPI FHIR.**
 
-- Capacidad para **procesar HL7v2 con motor de integración Mirth y transformación a JSON**.
-    
-- Transformación a FHIR con **Java + HAPI FHIR**.
-    
-- Validación y mapeo del JSON a recursos FHIR.
-    
-- Almacenamiento en un servidor real como **Aidbox**.
-    
-- Buen diseño técnico y conocimiento de **estándares e interoperabilidad**.
+---
+## Valor Profesional
+Este proyecto refleja mis competencias prácticas en interoperabilidad sanitaria: HL7v2, FHIR, transformación ETL, validación de datos clínicos, uso de herramientas reales (Mirth, Aidbox), y desarrollo backend con buenas prácticas en Java + Spring Boot.
 
-- Desarrollo de una API RESTful con Spring Boot.
+## Objetivos del Proyecto
 
-# Tecnologías y herramientas utilizadas:
-- Aidbox FHIR Server.
-- Mirth Connect.
-- HL7v2.5.
-- FHIR R4.
-- HAPI FHIR librería.
-- Spring Boot.
-- Docker.
-  
-# Diagrama de componentes y arquitectura a alto nivel del sistema:
-![image](https://github.com/user-attachments/assets/78a06fea-f3c5-4b65-9cc7-5cac842971b3)
+- Procesar mensajes **HL7v2** mediante **Mirth Connect**.
+- Transformar HL7 a **JSON** con JavaScript.
+- Convertir el JSON a **recursos FHIR** (`Patient`, `Observation`, etc.) en Java con **HAPI FHIR**.
+- Validar los recursos generados.
+- Enviar los recursos válidos al **servidor FHIR Aidbox**.
+- Desarrollar una **API RESTful** para pruebas y control.
+- Demostrar conocimientos técnicos de estándares clínicos e interoperabilidad.
 
-Explicación del Componentes:
+---
 
-	1) Entrada Hl7v2 en Mirth Connect:
-	
-- El canal recibe un ORU^R01 por FIleReader
-- Utiliza un JavaScript transformer para parsear el mensaje y construir un JSON
-- Envía el Json por Web Service
-	
-	2)  Aplicación en Spring Boot con HAPI FHIR:
-	
-- Se recibe el JSON desde Mirth.
-- Crear instancias de FHIR con HAPI FHIR.
-- Validar el recurso generado antes de enviar a Aidbox
-- Si no es válido, se logea el error.
-- Si la validación es exitosa IGenericClient para POST hacía Aidbox.
-		
-		3) Servidor Aidbox:
-		
-* Se utiliza como repositorio para mostrar los recursos creados.
+## 🛠️ Tecnologías y Herramientas
 
-Stack utilizado:
+| Componente        | Herramienta               |
+|------------------|--------------------------|
+| HL7v2             | Mirth Connect            |
+| Transformación    | Java + HAPI FHIR         |
+| Validación FHIR   | HAPI `FhirValidator`     |
+| Cliente FHIR      | HAPI `IGenericClient`    |
+| Servidor FHIR     | Aidbox Community Edition |
+| Backend           | Spring Boot + Maven      |
+| Contenedores      | Docker / Docker Compose  |
+| IDE               | IntelliJ IDEA            |
 
-| Componente     | Herramienta           |
-| -------------- | --------------------- |
-| HL7v2          | Mirth Connect         |
-| Transformación | Java + HAPI FHIR      |
-| Validación     | HAPI `FhirValidator`  |
-| Cliente FHIR   | HAPI `IGenericClient` |
-| Servidor FHIR  | Aidbox Community      |
-| IDE            | IntelliJ con Maven    |
+---
 
-**Ciclo ETL (Extract, Transform, Load):**
+## Ciclo ETL (Extract - Transform - Load)
 
-- **Extract (E):** Mirth Connect ingesta el archivo HL7v2.
-- **Transform (T):** Mirth con JavaScript transformando a  HL7v2 a JSON, y luego envío a Spring Boot transformando JSON a recursos FHIR y validándolos.
-- **Load (L):** Tu Spring Boot enviando los recursos FHIR a Aidbox.
+[HL7 ORU^R01] → [Mirth Connect] → [JSON] → [Spring Boot + HAPI FHIR] → [FHIR Resource] → [Aidbox Server]
 
-**Guía de Configuración y Ejecución: Pasos claros para que cualquiera pueda levantar el proyecto localmente:**
 
-- **Clonar el repositorio.**
 
-- **Instalar Docker.**
 
-- **Levantar Aidbox/Postgres (docker-compose up -d).**
 
-- **Configurar Mirth Connect (importar el canal, configurar el directorio de entrada/salida).**
+## Componentes Explicados
 
-- **Compilar y ejecutar la aplicación Spring Boot.**
+### 1️⃣ Mirth Connect
 
-- **Deployar el canal y enviar mensaje.**
+- Recibe mensaje HL7 ORU^R01 mediante `File Reader`.
+- Transforma el HL7 a JSON mediante `JavaScript Transformer`.
+- Envía el JSON a Spring Boot mediante HTTP Web Service.
+
+### 2️⃣ Spring Boot + HAPI FHIR
+
+- Recibe JSON y lo convierte en recursos FHIR (`Patient`, `Observation`, etc.).
+- Valida el recurso con `FhirValidator`.
+- Si el recurso es válido, lo envía a Aidbox usando `IGenericClient`.
+- Si no es válido, logea el error.
+
+### 3️⃣ Aidbox FHIR Server
+
+- Recibe los recursos como POST en su API REST.
+- Permite visualización y gestión de los datos clínicos en formato FHIR.
+
+---
