@@ -64,35 +64,54 @@ Este proyecto refleja mis competencias prácticas en interoperabilidad sanitaria
 
 ---
 
-1. **Clonar el repositorio**
+## Guía de Configuración y Ejecución
 
-```bash
+1. Clonar el repositorio
 git clone https://github.com/tu_usuario/TL_HL7_To_FHIRSERVER.git
 cd TL_HL7_To_FHIRSERVER
 
-2. **Instalar Docker**
+2. Instalar Docker
+Si no tienes Docker, instálalo desde:
+👉 https://docs.docker.com/get-docker/
 
-https://docs.docker.com/get-docker/
-
-3. **Levantar Aidbox + PostgreSQL**
+3. Levantar Aidbox + PostgreSQL
+Desde la raíz del proyecto, ejecuta:
 docker-compose up -d
+Esto levantará el servidor Aidbox y la base de datos PostgreSQL.
 
-4. **Importar Canal en Mirth Connect**
+4. Importar canal en Mirth Connect
+Accede a Mirth Connect desde tu launcher:
 
-Acceder a Mirth en http://localhost:8081
+Inicia sesión y ve a Channels > Import Channel.
 
-Importar canal desde /mirth-channel/etl_hl7_channel.xml
+Selecciona el archivo:
+./channel.xml
 
-Configurar FileReader con ruta a /hl7-messages
+Luego de importar:
 
-Ejecutar Spring Boot App
+Ajusta la ruta del File Reader a la carpeta local donde colocarás los mensajes HL7, por ejemplo:
+/ruta/absoluta/hl7-messages
+(Asegúrate de que esa carpeta exista en tu sistema y tenga permisos de lectura.)
+
+Guarda los cambios y deployar el canal.
+
+5. Ejecutar la aplicación Spring Boot
+Desde la carpeta de la app:
 
 cd spring-app
 ./mvnw spring-boot:run
+(O usa mvn spring-boot:run si tienes Maven instalado globalmente.)
 
-5. **Enviar Mensaje de Prueba**
+6. Enviar un mensaje de prueba
+Copia un archivo .hl7 válido al directorio configurado en el File Reader.
 
-Coloca un .hl7 en la carpeta configurada en FileReader
+Mirth lo procesará, transformará a JSON y lo enviará por HTTP.
 
-Revisa consola/logs y el recurso FHIR en Aidbox (http://localhost:8087&ui/console)
-------
+La aplicación Spring Boot convertirá ese JSON a recursos FHIR (Patient, Observation, etc.), los validará y los enviará a Aidbox.
+
+7. Visualiza los recursos FHIR en Aidbox
+Abre el panel de Aidbox en tu navegador:
+
+👉 http://localhost:8087/ui/console
+
+Aquí podrás buscar y verificar los recursos almacenados.
