@@ -10,12 +10,11 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.List;
 
 /**
- * Configuración global de CORS para la aplicación Spring Boot.
+ * Configuración global de CORS para la aplicación.
  *
- * <p>Esta clase define las reglas de acceso CORS permitiendo todas las
- * originaciones, métodos y encabezados.</p>
+ * <p>Esta clase define las reglas de acceso CORS permitiendo todas las métodos y encabezados.</p>
  *
- * <p>Uso común en aplicaciones que manejan solicitudes HTTP desde diferentes
+ * <p>Común en aplicaciones que manejan solicitudes HTTP desde diferentes
  * dominios.</p>
  */
 @Configuration
