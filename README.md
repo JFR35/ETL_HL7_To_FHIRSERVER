@@ -84,10 +84,13 @@ Accede a Mirth Connect desde tu launcher:
 
 Inicia sesión y ve a Channels > Import Channel.
 
-Selecciona el archivo:
-./channel.xml
+Selecciona el archivo que encontrarás en este repositorio:
+./Canal_Mirth_Connect.xml
 
 Luego de importar:
+
+Descárgate el mensaje HL7 que encontrarás en este repositorio:
+./ORU^R01.hl7
 
 Ajusta la ruta del File Reader a la carpeta local donde colocarás los mensajes HL7, por ejemplo:
 /ruta/absoluta/hl7-messages
